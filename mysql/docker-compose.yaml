@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mysql-dev:
+    image: mysql:8
+    container_name: mysql-dev
+    restart: always
+    env_file:
+      - ./env
+      #    ports:
+      #        - 3306:3306
+    volumes:
+        - data-volume:/var/lib/mysql
+    networks:
+        - dev-bridge
+
+networks:
+  dev-bridge:
+    external: true
+volumes:
+  data-volume:
+    name: mysql-dev-data
