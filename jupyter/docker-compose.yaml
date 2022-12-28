@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  jupyter-dev:
+    build:
+      dockerfile: Dockerfile
+    container_name: jupyter-dev
+    hostname: jupyter-dev.docker
+    restart: always
+    entrypoint: >
+      jupyter-lab
+      --allow-root
+      --ip=0.0.0.0
+      --port=80
+      --no-browser
+      --notebook-dir=/workspace
+    expose:
+      - "80"
+    volumes:
+      - jupyter-workspace:/workspace
+    networks:
+      - dev-bridge
+networks:
+  dev-bridge:
+    external: true
+volumes:
+  jupyter-workspace:
+    name: jupyter-workspace
