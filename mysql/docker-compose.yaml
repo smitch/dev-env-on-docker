@@ -4,6 +4,7 @@ services:
   mysql-dev:
     image: mysql:8
     container_name: mysql-dev
+    hostname: mysql-dev.docker
     restart: always
     env_file:
       - ./env
