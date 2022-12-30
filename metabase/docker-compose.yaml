@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  metabase-dev:
+    image: metabase/metabase:latest
+    container_name: metabase-dev
+    hostname: metabase-dev.docker
+    restart: always
+    networks:
+        - dev-bridge
+
+networks:
+  dev-bridge:
+    external: true
