@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  phpmyadmin-dev:
+    image: phpmyadmin/phpmyadmin
+    hostname: phpmyadmin-dev.docker
+    container_name: phpmyadmin-dev
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - dev-bridge
+    volumes:
+      - data-volume:/sessions
+
+networks:
+  dev-bridge:
+    external: true
+volumes:
+  data-volume:
+    name: phpmyadmin-dev-data
