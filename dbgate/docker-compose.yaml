@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  dbgate-dev:
+    image: dbgate/dbgate
+    hostname: dbgate-dev.docker
+    container_name: dbgate-dev
+    restart: always
+    networks:
+      - dev-bridge
+
+networks:
+  dev-bridge:
+    external: true
+
