@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  portainer-dev:
+    image: portainer/portainer-ce
+    hostname: portainer-dev.docker
+    container_name: portainer-dev
+    restart: always
+    networks:
+      - dev-bridge
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  dev-bridge:
+    external: true
+
