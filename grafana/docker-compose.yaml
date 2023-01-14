@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  grafana-dev:
+    image: grafana/grafana
+    hostname: grafana-dev.docker
+    container_name: grafana-dev
+    restart: always
+    networks:
+      - dev-bridge
+    volumes:
+      - data-volume:/var/lib/grafana
+
+networks:
+  dev-bridge:
+    external: true
+volumes:
+  data-volume:
+    name: grafana-dev-data
