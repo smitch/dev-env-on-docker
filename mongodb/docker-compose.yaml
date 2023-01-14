@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  mongodb-dev:
+    image: mongo
+    container_name: mongodb-dev
+    hostname: mongodb-dev.docker
+    restart: always
+    env_file:
+      - ./env
+      # MONGO_INITDB_ROOT_USERNAME:
+      # MONGO_INITDB_ROOT_PASSWORD:
+    volumes:
+      - data-volume:/data/db
+      - config-volume:/data/configdb
+    networks:
+        - dev-bridge
+
+  mongo-express-dev:
+    image: mongo-express
+    container_name: mongo-express-dev
+    hostname: mongo-express-dev.docker
+    restart: always
+    env_file:
+      - ./env
+      # ME_CONFIG_MONGODB_ADMINUSERNAME:
+      # ME_CONFIG_MONGODB_ADMINPASSWORD:
+      # ME_CONFIG_MONGODB_SERVER:
+    networks:
+        - dev-bridge
+
+networks:
+  dev-bridge:
+    external: true
+
+volumes:
+  data-volume:
+    name: mongodb-dev-data
+  config-volume:
+    name: mongodb-dev-config
+
